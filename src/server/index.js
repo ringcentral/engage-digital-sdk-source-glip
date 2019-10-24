@@ -27,7 +27,7 @@ async function getMessages() {
   }
   let final = []
   let ids = res.records.map(r => r.creatorId)
-  let ids = ids.length
+  ids = ids.length
     ? await rc.get(`/restapi/v1.0/glip/persons/${ids.join(',')}`)
     : []
   if (!ids || !ids.length) {

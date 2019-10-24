@@ -11,7 +11,7 @@
   ],
   "scripts": {
     "ngrok": "ngrok http -region ap 4100",
-    "start": "node ./node_modules/.bin/ringcentral-engage-source src/server/index.js",
+    "start": "node -r @babel/register ./node_modules/.bin/ringcentral-engage-source src/server/index.js",
     "compile": "babel src/server --out-dir dist/server",
     "build": "npm run clean && npm run compile",
     "clean": "node build/clean.js",
