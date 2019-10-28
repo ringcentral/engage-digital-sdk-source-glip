@@ -19,7 +19,8 @@
     "deploy-lambda": "node cmds/deploy",
     "deploy": "npm run build-lambda && npm run deploy-lambda",
     "watch": "cd deploy && ../node_modules/.bin/sls logs -f app -t",
-    "lint": "standard"
+    "lint": "./node_modules/.bin/standard",
+    "fix": "./node_modules/.bin/standard --fix"
   },
   "devDependencies": {
     "@babel/cli": "^7.2.3",

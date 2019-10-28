@@ -10,7 +10,7 @@ const rc = new RingCentral({
   clientSecret: process.env.RINGCENTRAL_CLIENT_SECRET
 })
 
-async function getMessages() {
+async function getMessages () {
   await rc.login({
     username: process.env.RINGCENTRAL_USERNAME,
     extension: process.env.RINGCENTRAL_EXTENSION,
@@ -50,7 +50,7 @@ async function getMessages() {
         id: r.creatorId,
         firstname: per.firstName,
         lastname: per.lastName,
-        screenname: `${er.firstName} ${per.lastName}`,
+        screenname: `${per.firstName} ${per.lastName}`,
         created_at: per.creationTime,
         updated_at: per.lastModifiedTime
       }
