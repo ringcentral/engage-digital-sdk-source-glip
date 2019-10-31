@@ -1,5 +1,5 @@
 service:
-  name: engage-digital-source-1
+  name: engage-digital-source-glip
 provider:
   stage: ${opt:stage, 'prod'}
   name: aws
@@ -20,17 +20,37 @@ package:
     - '*.js'
     - 'node_modules/**'
 functions:
+  maintain:
+    tags:
+      department: dev
+      Owner: zzzz
+      Environment: xxxx
+      Team: xx
+      Name: engage-digital-source-glip
+    description: engage-digital-source-glip by Drake.Zhao@ringcentral.com
+    # role: arn:aws:iam::xxxx:role/lambda_basic_execution_john.wang
+    handler: lambda.maintain
+    events:
+      - schedule: rate(1 day)
   app:
     handler: lambda.app
     timeout: 400 # 5 miutes
     # role: arn:aws:iam::111111:role/xxxx-prod-us-east-1-lambdaRole
+    # vpc:
+    #   securityGroupIds:
+    #     - sg-xxx
+    #     - sg-yyy
+    #   subnetIds:
+    #     - subnet-ttt
+    #     - subnet-ggg
+    #     - subnet-vvv
     tags:
       department: dev
       Owner: Your name
       Stage: production
       Environment: your-env-tag
       Team: your-team
-      Name: engage-digital-chatbot-1
+      Name: engage-digital-source-glip
     events:
       - http:
           method: any
