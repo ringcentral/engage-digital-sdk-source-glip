@@ -32,12 +32,17 @@ Follow [Step by step guide to enable SDK source](https://github.com/ringcentral/
 
 ```bash
 # create env file
-cp .env.sample .env
+cp sample-env.env .env
 # then edit .env, set proper setting according to the tip in .env
 
 # run local dev server
 npm start
+
+# run front end server
+npm run c
 ```
+
+Then visit `https://xxxx.ap.ngrok.io`, fill in the required fields to get it to work.
 
 ### Test source server
 
@@ -52,7 +57,7 @@ npm run build
 ## Run production code
 
 ```bash
-npx ringcentral-engage-source dist/server/index.js
+node dist/server/run-server.js
 ```
 
 ## Build and deploy to AWS Lambda
