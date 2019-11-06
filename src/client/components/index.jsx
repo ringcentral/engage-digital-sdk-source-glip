@@ -103,6 +103,9 @@ export default class App extends Component {
           <SdkForm
             {...props}
           />
+          <p className='pd1y'>
+            * After polling API retrived messages, if you want to reply message, you need to goto Engage Digital Admin console => identities to set the identity with your name to be controlled.
+          </p>
           {this.renderFooter()}
         </div>
       </div>

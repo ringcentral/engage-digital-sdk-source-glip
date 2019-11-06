@@ -23,7 +23,6 @@ export const onRequest = async (body, req) => {
   if (!user || !user.id || !user.enabled) {
     return ''
   }
-  console.log('user exist')
   let result
   // check https://github.com/ringcentral/engage-digital-source-sdk/wiki for more info
   switch (action) {
@@ -44,7 +43,7 @@ export const onRequest = async (body, req) => {
       result = await showThread(user, params.id)
       break
     case 'messages.list':
-      result = await listMessages(user, params.thread_id)
+      result = await listMessages(user, params.since_id, params.thread_id)
       break
     case 'messages.show':
       result = await showMessage(user, params.thread_id, params.id)
@@ -55,7 +54,7 @@ export const onRequest = async (body, req) => {
     default:
       result = {}
   }
-  console.log('result.length', result.length, result[0])
+  console.log('result.length', result.length)
   return result
 }
 

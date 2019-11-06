@@ -43,6 +43,7 @@ export const getMembers = async (user, _ids) => {
     }
     p.users.push({
       id: o.id,
+      puppetizable: o.id === user.id,
       screenname: `${o.firstName} ${o.lastName}`,
       created_at: o.creationTime,
       updated_at: o.lastModifiedTime

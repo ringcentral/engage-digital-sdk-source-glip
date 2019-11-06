@@ -11,9 +11,6 @@ export default async (message, conf) => {
   const { ownerId } = message
   const { creatorId } = message.body
   const isTalkToSelf = ownerId === creatorId && text.startsWith('#me ')
-  if (ownerId === creatorId && !isTalkToSelf) {
-    return // bot should not talk to itself to avoid dead-loop conversation
-  }
   const { groupId } = message.body
   const user = await User.findByPk(ownerId)
   const group = await user.getGroup(groupId)

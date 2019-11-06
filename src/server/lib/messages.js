@@ -4,6 +4,7 @@
 
 import { getMembers } from './common'
 import { listThreads } from './threads'
+import _ from 'lodash'
 
 /**
  * format ringcentral message to Dimelo message
@@ -20,16 +21,23 @@ export async function formatMessage (user, records) {
     if (!u) {
       return null
     }
+    let f = u.firstName || 'NoName'
+    let l = u.lastName || ''
     return {
       actions: ['show', 'reply'],
       id: d.id,
       thread_id: d.chatId || d.groupId,
       body: d.text || '',
+      updated_at: d.lastModifiedTime,
+      created_at: d.creationTime,
       author: {
         id: u.id,
-        screenname: `${u.firstName} ${u.lastName}`,
+        firstname: f,
+        lastname: l,
+        screenname: `${u.firstName || 'NoName'} ${u.lastName || ''}`,
         created_at: u.creationTime,
-        updated_at: u.lastModifiedTime
+        updated_at: u.lastModifiedTime,
+        puppetizable: u.id === user.id
       },
       attachments: d.attachments
         ? d.attachments
@@ -49,10 +57,10 @@ export async function formatMessage (user, records) {
  * @param {object} user user instance
  * @param {string} tid thread id
  */
-export const listMessages = async (user, tid) => {
+export const listMessages = async (user, sinceId, tid) => {
   // /restapi/v1.0/glip/chats/chatId/posts
   if (tid) {
-    const res = await user.rc.get(user.rc.server + `/restapi/v1.0/glip/chats/${tid}/posts?recordCount=10`)
+    const res = await user.rc.get(user.rc.server + `/restapi/v1.0/glip/chats/${tid}/posts?recordCount=5`)
     if (!res || !res.data || !res.data.records) {
       return []
     }
@@ -62,11 +70,30 @@ export const listMessages = async (user, tid) => {
   let f = []
   for (let t of threads) {
     let { id } = t
-    let arr = await listMessages(user, id)
+    let arr = await listMessages(user, null, id)
     f = [
       ...f,
       ...arr
     ]
+  }
+  // console.log(f.map(g => {
+  //   return {
+  //     id: g.id,
+  //     created_at: g.created_at
+  //   }
+  // }))
+  f.sort((a, b) => {
+    return a.created_at > b.created_at ? 1 : -1
+  })
+  // console.log(f.map(g => {
+  //   return {
+  //     id: g.id,
+  //     created_at: g.created_at
+  //   }
+  // }))
+  if (sinceId) {
+    let i = _.findIndex(f, d => d.id === sinceId)
+    f = f.slice(0, i)
   }
   return f
 }
