@@ -72,3 +72,6 @@ google.json
 /dist/
 *.sqlite
 *.sqlite-journal
+/deploy/**/*
+!deploy/env.sample.yml
+!deploy/serverless.sample.yml
