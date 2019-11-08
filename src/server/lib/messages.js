@@ -119,11 +119,11 @@ export const createMessage = async (user, tid, message) => {
   const data = {
     text: message.body
   }
-  let r = await user.rc.post(
-    `/restapi/v1.0/glip/chats/${tid}/posts`,
+  let r = await user.sendMessage(
+    tid,
     data
   )
-  if (r && r.data) {
+  if (r) {
     return formatMessage(user, [r.data]).then(r => r[0])
   }
 }
