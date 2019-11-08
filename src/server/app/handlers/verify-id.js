@@ -17,5 +17,6 @@ export default async (req, res, next) => {
     return res.send('')
   }
   res.locals.secret = user.secret
+  console.log('res.locals', res.locals, user)
   next()
 }
