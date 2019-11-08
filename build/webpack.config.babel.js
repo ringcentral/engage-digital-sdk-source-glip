@@ -32,7 +32,7 @@ const config = {
     'react-dom': 'ReactDOM'
   },
   output: {
-    path: resolve(__dirname, '../deploy/static'),
+    path: resolve(__dirname, '../deploy/dist/static'),
     filename: 'js/[name].bundle.js',
     publicPath: '/',
     chunkFilename: 'js/[name].bundle.js',
@@ -97,7 +97,7 @@ const config = {
   devServer: {
     host,
     disableHostCheck: true,
-    contentBase: '../deploy/static',
+    contentBase: '../deploy/dist/static',
     port: devPort,
     overlay: {
       warnings: true,

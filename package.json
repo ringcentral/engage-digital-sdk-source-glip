@@ -17,8 +17,9 @@
     "compile": "babel src/server --out-dir dist/server",
     "c": "./node_modules/.bin/webpack-dev-server --progress --colors --config deploy/webpack.config.babel.js",
     "build": "npm run clean && npm run compile",
+    "view": "node build/view.js",
     "clean": "node build/clean.js",
-    "build-lambda": "node cmds/build",
+    "build-lambda": "npm run clean && node cmds/build && npm run view",
     "deploy-lambda": "node cmds/deploy",
     "watch": "cd deploy && ../node_modules/.bin/sls logs -f app -t",
     "lint": "./node_modules/.bin/standard"

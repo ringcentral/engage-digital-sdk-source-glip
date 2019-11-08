@@ -26,6 +26,7 @@ function readYml (path) {
 }
 const { log } = console
 
+log('cwd:', cwd)
 async function run () {
   log('start deploy')
   copyFileSync(

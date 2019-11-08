@@ -1,3 +1,5 @@
-const { rm } = require('shelljs')
+const { rm, mv } = require('shelljs')
 
-rm('-rf', 'dist')
+mv('deploy/*.yml', './')
+rm('-rf', 'deploy/*')
+mv('./*.yml', 'deploy/')
