@@ -15,7 +15,7 @@
     "deploy": "npm run build-lambda && npm run deploy-lambda",
     "fix": "./node_modules/.bin/standard --fix",
     "compile": "babel src/server --out-dir dist/server",
-    "c": "./node_modules/.bin/webpack-dev-server --progress --colors --config build/webpack.config.babel.js",
+    "c": "./node_modules/.bin/webpack-dev-server --progress --colors --config deploy/webpack.config.babel.js",
     "build": "npm run clean && npm run compile",
     "clean": "node build/clean.js",
     "build-lambda": "node cmds/build",
