@@ -1,3 +1,3 @@
 const { cp } = require('shelljs')
 
-cp('-r', 'src/views', 'deploy/')
+cp('-r', 'src/server/views', 'deploy/')

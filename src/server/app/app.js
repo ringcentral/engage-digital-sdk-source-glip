@@ -32,13 +32,13 @@ export default (app, onRequest) => {
     }
   })
 
-  const staticPath = resolve(__dirname, '../../dist/static')
+  const staticPath = resolve(__dirname, '../dist/static')
 
   app.use(express.static(staticPath))
   app.use(morgan('tiny'))
   app.use(bodyParser.urlencoded({ extended: false }))
   app.use(bodyParser.json())
-  app.set('views', resolve(__dirname, '../../views'))
+  app.set('views', resolve(__dirname, '../views'))
   app.set('view engine', 'pug')
 
   app.get('/logout', logout)
