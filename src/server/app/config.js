@@ -18,10 +18,11 @@ export const onPostAdd = async ({
     const data = {
       action: 'messages.create',
       params: {
-        actions: ['show', 'reply', 'list'],
+        actions: ['show', 'reply'],
         ..._.pick(event, ['id', 'thread_id', 'body', 'author'])
       }
     }
+    console.log('message create:', data)
     const sig = sign(data, user.secret)
     await axios.post(user.endpoint, data, {
       headers: {
