@@ -58,5 +58,3 @@ export const onRequest = async (body, req) => {
 
 // extends or override express app as you need
 export const appExtend = (app) => initApp(app, onRequest)
-
-export const NO_ROUTE = true
