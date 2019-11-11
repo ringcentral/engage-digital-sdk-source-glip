@@ -13,11 +13,9 @@ import { showThread, listThreads } from './lib/threads'
  * @param {object} req, express request
  */
 export const onRequest = async (body, req) => {
-  console.log('body:', body)
   const { action, params } = body
   const { id } = req.params
-  console.log('param', params)
-  console.log('id', id)
+  console.log('source sdk req received:', id, body)
   const user = await User.findByPk(id)
   // console.log('user', user)
   if (!user || !user.id || !user.enabled) {
