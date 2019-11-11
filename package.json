@@ -68,7 +68,7 @@
     "webpack-dev-server": "^3.3.1"
   },
   "dependencies": {
-    "ringcentral-engage-source": "^0.1.7",
+    "ringcentral-engage-source": "^0.1.8",
     "serverless-http": "^2.0.2",
     "cron": "^1.7.2",
     "dynamo-sequelize": "^0.7.2",
