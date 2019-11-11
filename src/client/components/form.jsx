@@ -86,6 +86,9 @@ class SdkForm extends React.Component {
             className='mg1r mg1b'
           >Submit</Button>
           <p>* Before submit API Token and Realtime endpoint URL the service can not respond</p>
+          <p>
+            * After polling API retrieved messages, if you want to reply message, you need  set the identity with your name to be controlled in Engage Digital Admin console => identities.
+          </p>
         </FormItem>
       </Form>
     )
