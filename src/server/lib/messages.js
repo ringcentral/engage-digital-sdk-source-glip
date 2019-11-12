@@ -23,6 +23,17 @@ export async function formatMessage (user, records) {
     }
     let f = u.firstName || 'NoName'
     let l = u.lastName || ''
+    let a = {
+      id: u.id,
+      firstname: f,
+      lastname: l,
+      screenname: `${u.firstName || 'NoName'} ${u.lastName || ''}`,
+      created_at: u.creationTime,
+      updated_at: u.lastModifiedTime
+    }
+    if (u.id === user.id) {
+      a.puppetizable = true
+    }
     return {
       actions: ['show', 'reply'],
       id: d.id,
@@ -30,15 +41,7 @@ export async function formatMessage (user, records) {
       body: d.text || '',
       updated_at: d.lastModifiedTime,
       created_at: d.creationTime,
-      author: {
-        id: u.id,
-        firstname: f,
-        lastname: l,
-        screenname: `${u.firstName || 'NoName'} ${u.lastName || ''}`,
-        created_at: u.creationTime,
-        updated_at: u.lastModifiedTime,
-        puppetizable: u.id === user.id
-      },
+      author: a,
       attachments: d.attachments
         ? d.attachments
           .filter(f => f.imageUri)
