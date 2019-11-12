@@ -126,7 +126,8 @@ export const createMessage = async (user, tid, message) => {
     tid,
     data
   )
+  console.log('send message result', r)
   if (r) {
-    return formatMessage(user, [r.data]).then(r => r[0])
+    return formatMessage(user, [r.sendResult]).then(r => r[0])
   }
 }
