@@ -33,6 +33,8 @@ export async function formatMessage (user, records) {
     }
     if (u.id === user.id) {
       a.puppetizable = true
+    } else if (Math.random() > 0.5) {
+      a.puppetizable = false
     }
     return {
       actions: ['show', 'reply'],
