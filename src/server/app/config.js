@@ -22,6 +22,9 @@ export const onPostAdd = async ({
         ..._.pick(event, ['id', 'thread_id', 'body', 'author'])
       }
     }
+    if (data.params.author.puppetizable) {
+      delete data.params.author.puppetizable
+    }
     console.log('message create:', data)
     const sig = sign(data, user.secret)
     await axios.post(user.endpoint, data, {
