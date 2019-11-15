@@ -7,6 +7,19 @@ import { listThreads } from './threads'
 import _ from 'lodash'
 
 /**
+ * translate `![:Person](xxxx)` to username
+ * @param {array} mentions
+ * @param {string} text
+ */
+function translateText (mentions = [], text) {
+  for (let m of mentions) {
+    const reg = new RegExp(_.escapeRegExp(`![:Person](${m.id})`), 'g')
+    text = text.replace(reg, '@' + m.name)
+  }
+  return text
+}
+
+/**
  * format ringcentral message to Dimelo message
  * @param {array} records message array
  */
@@ -38,7 +51,7 @@ export async function formatMessage (user, records) {
       actions: ['show', 'reply'],
       id: d.id,
       thread_id: d.chatId || d.groupId,
-      body: d.text || '',
+      body: translateText(d.mentions, d.text || ''),
       updated_at: d.lastModifiedTime,
       created_at: d.creationTime,
       author: a,

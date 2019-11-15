@@ -30,7 +30,9 @@ export default class App extends Component {
         <p>
           This app help RingCentral Engage Digital users to create Dimelo SDK source with Glip accout, so RingCentral Engage Digital users can view/reply Glip messages in RingCentral Engage Digital admin console, you can follow
           <a href='https://github.com/ringcentral/engage-digital-source-sdk-js/blob/master/docs/enable-sdk-source.md' target='_blank' className='mg1x'>this guide</a>
-          to create Dimelo SDK source</p>
+          to create Dimelo SDK source, you can check this youtube video as a guide:
+          <a href='https://youtu.be/Gu0GJ86nSEs' target='_blank' className='mg1x'>https://youtu.be/Gu0GJ86nSEs</a>
+        </p>
         <p className='mg3t pd1y'>
           Powered by
           <a href='https://github.com/ringcentral/engage-digital-source-sdk-js' target='_blank' className='mg1x'>engage-digital-source-sdk-js</a>,
