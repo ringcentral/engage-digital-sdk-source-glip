@@ -4,7 +4,7 @@ RingCentral Engage Digital Dimelo SDK source: glip
 
 ## Youtube video
 
-todo
+[https://youtu.be/Gu0GJ86nSEs](https://youtu.be/Gu0GJ86nSEs)
 
 ## Prerequisites
 
