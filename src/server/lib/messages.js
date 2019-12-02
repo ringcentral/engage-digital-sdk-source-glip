@@ -99,7 +99,7 @@ export const listMessages = async (user, sinceId, tid) => {
   //   }
   // }))
   f.sort((a, b) => {
-    return a.created_at > b.created_at ? 1 : -1
+    return a.created_at > b.created_at ? -1 : 1
   })
   // console.log(f.map(g => {
   //   return {
