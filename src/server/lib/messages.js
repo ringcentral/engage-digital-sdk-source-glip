@@ -76,13 +76,14 @@ export async function formatMessage (user, records) {
 export const listMessages = async (user, sinceId, tid) => {
   // /restapi/v1.0/glip/chats/chatId/posts
   if (tid) {
-    const res = await user.rc.get(user.rc.server + `/restapi/v1.0/glip/chats/${tid}/posts?recordCount=5`)
+    const res = await user.rc.get(user.rc.server + `/restapi/v1.0/glip/chats/${tid}/posts?recordCount=2`)
     if (!res || !res.data || !res.data.records) {
       return []
     }
     return formatMessage(user, res.data.records)
   }
   let threads = await listThreads(user)
+  console.log('threads', threads)
   let f = []
   for (let t of threads) {
     let { id } = t
@@ -111,6 +112,7 @@ export const listMessages = async (user, sinceId, tid) => {
     let i = _.findIndex(f, d => d.id === sinceId)
     f = f.slice(0, i)
   }
+  console.log('fff', f)
   return f
 }
 

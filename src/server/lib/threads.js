@@ -8,7 +8,7 @@
  * @returns {array}
  */
 export const listThreads = async (user) => {
-  let res = await user.rc.get(user.rc.server + '/restapi/v1.0/glip/conversations?recordCount=5')
+  let res = await user.rc.get(user.rc.server + '/restapi/v1.0/glip/conversations?recordCount=10')
   if (!res || !res.data || !res.data.records || !res.data.records.length) {
     return []
   }

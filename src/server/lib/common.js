@@ -7,7 +7,7 @@ import _ from 'lodash'
 async function getMember (user, id) {
   let res = await user.rc.get(
     `/restapi/v1.0/glip/persons/${id}`
-  )
+  ).catch(console.log)
   if (!res || !res.data) {
     return null
   }
