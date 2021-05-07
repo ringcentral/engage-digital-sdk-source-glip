@@ -76,7 +76,7 @@
     "express-jwt": "^5.3.1",
     "jsonwebtoken": "^8.5.1",
     "pg": "^7.7.1",
-    "pug": "^2.0.3",
+    "pug": "^3.0.1",
     "ringcentral-js-concise": "^0.7.7",
     "sequelize": "*",
     "shortid": "^2.2.14",
